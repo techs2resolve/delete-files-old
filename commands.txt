@@ -1,0 +1,27 @@
+Find and delete files older than 60 days
+
+
+ find . -type d -mtime +60
+ find . -type d -mtime +60 -exec rm -rf {} \;
+ df -h
+ find . -type d -mtime +30 -exec rm -rf {} \;
+
+
+find . -type d -mtime +365 -exec rm -rf {} \;
+
+
+For magenta Session removing
+
+to remove old files you need to ssh to the server and type this:
+
+cd /var/www/html/magento/var/session/
+find . -name 'sess*' -mtime +365 -exec rm -rf {} \;
+
+it will remove files older than week.
+to rotate magento logs use this: 
+https://magento.stackexchange.com/a/95489/31999
+UP 
+some command variations:
+
+find . -mtime +30 -delete
+find . -mtime +30 | xargs rm -Rf
